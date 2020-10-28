@@ -2,11 +2,13 @@
     <ul class="list-unstyled">
         @foreach ($users as $user)
             <li class="media">
-                {{-- ユーザのメールアドレスをもとにGravatarを取得して表示 --}}
+                
                 <img class="mr-2 rounded" src="{{ Gravatar::get($user->email, ['size' => 50]) }}" alt="">
+
                 <div class="media-body">
                     <div>
                         {{ $user->name }}
+                        <span class="text-muted">posted at {{ $user->created_at }}</span>
                     </div>
                     <div>
                         {{-- ユーザ詳細ページへのリンク --}}
@@ -18,4 +20,5 @@
     </ul>
     {{-- ページネーションのリンク --}}
     {{ $users->links() }}
+
 @endif
